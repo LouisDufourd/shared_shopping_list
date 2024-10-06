@@ -11,10 +11,11 @@ class ApiService {
     final response = await http.get(Uri.parse("$baseUrl/user/login/$username/$password"));
 
     if(response.statusCode == 200) {
+      var json = utf8.decode(response.body.codeUnits);
       if (kDebugMode) {
-        print("login : ${response.body}");
+        print("login : $json");
       }
-      return LoginResponse.fromJson(jsonDecode(response.body));
+      return LoginResponse.fromJson(jsonDecode(json));
     } else {
       return LoginResponse(false);
     }
@@ -24,10 +25,11 @@ class ApiService {
     final response = await http.get(Uri.parse("$baseUrl/user/homes/$username"));
 
     if(response.statusCode == 200) {
+      var json = utf8.decode(response.body.codeUnits);
       if (kDebugMode) {
-        print("households : ${response.body}");
+        print("households : json");
       }
-      return UserHomesResponse.fromJson(jsonDecode(response.body));
+      return UserHomesResponse.fromJson(jsonDecode(json));
     } else {
       return UserHomesResponse(List.empty());
     }
@@ -37,10 +39,11 @@ class ApiService {
     final response = await http.get(Uri.parse("$baseUrl/home/users/$name"));
 
     if(response.statusCode == 200) {
+      var json = utf8.decode(response.body.codeUnits);
       if (kDebugMode) {
-        print("users : ${response.body}");
+        print("users : $json");
       }
-      return HomeUsersResponse.fromJson(jsonDecode(response.body));
+      return HomeUsersResponse.fromJson(jsonDecode(json));
     } else {
       return HomeUsersResponse(List.empty());
     }
@@ -50,10 +53,11 @@ class ApiService {
     final response = await http.get(Uri.parse("$baseUrl/shoppingList/$name"));
 
     if(response.statusCode == 200) {
+      var json = utf8.decode(response.body.codeUnits);
       if (kDebugMode) {
-        print("shoppingList : ${response.body}");
+        print("shoppingList : $json");
       }
-      return ShoppingListResponse.fromJson(jsonDecode(response.body));
+      return ShoppingListResponse.fromJson(jsonDecode(json));
     } else {
       return ShoppingListResponse(List.empty());
     }

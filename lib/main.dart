@@ -15,7 +15,7 @@ void main() {
         Locale('en'), // English
       ],
       theme: ThemeData(
-        fontFamily: 'Roboto'
+        fontFamily: 'OpenSans'
       ),
       home: const LoginPage(),
     ),
